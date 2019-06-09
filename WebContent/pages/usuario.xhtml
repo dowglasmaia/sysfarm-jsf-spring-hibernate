@@ -1,128 +1,130 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/WEB-INF/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/WEB-INF/template/template.xhtml">
 
-<ui:define name="conteudo">	
+	<ui:define name="conteudo">
 
-	<h:form id="frmUsuario" styleClass="form-group">
-		<div class="card text-white bg-dark">
-			<div class="card-header">
-				<h4>Cadastro de Usuário</h4>
-			</div>
-			<div class="card-body">
-				
-				<div class=" row">
-					<!--  Nome -->
-					<div class="col-12 col-md-8">
-						<p:outputLabel value="Nome:" for="nome"
-							styleClass="control-label col-form-label" />
-						<p:inputText value="#{usuarioController.usuario.nome}" id="nome"
-							styleClass="form-control" label="Nome" size="30" maxlength="50"
-							required="true" requiredMessage="Informe o Nome de Usuário" />
-					</div>
-					<!--  Data de Nascimento -->
-					<div class="col-12 col-md-4">
-						<p:outputLabel value="Data de Nascimento:" for="data"
-							styleClass="control-label col-form-label" />
-						<p:inputMask value="#{usuarioController.usuario.nascimento}" mask="99/99/9999"
-							id="data" styleClass="form-control" label="Data de Nascimento"
-							size="10" maxlength="10" required="true"
-							requiredMessage="Informe sua data de Nascimento">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</p:inputMask>
-					</div>
-
+		<h:form id="frmUsuario" styleClass="form-group">
+			<div class="card text-white bg-dark">
+				<div class="card-header">
+					<h4>Cadastro de Usuário</h4>
 				</div>
+				<div class="card-body">
 
-				<div class=" row">
-					<!--  e-Mail -->
-					<div class="col-12 col-md-8">
-						<p:outputLabel value="e-Mail:" for="email"
-							styleClass="control-label col-form-label" />
-						<h:panelGroup>
-							<p:inputText value="#{usuarioController.usuario.email}"
-								id="email" styleClass="form-control" label="Email" size="30"
-								maxlength="50" required="true"
-								validatorMessage="e-Mail inválido!">
-								<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+					<div class=" row">
+						<!--  Nome -->
+						<div class="col-12 col-md-8">
+							<p:outputLabel value="Nome:" for="nome"
+								styleClass="control-label col-form-label" />
+							<p:inputText value="#{usuarioController.usuario.nome}" id="nome"
+								styleClass="form-control" label="Nome" size="30" maxlength="50"
+								required="true" requiredMessage="Informe o Nome de Usuário" />
+						</div>
+						<!--  Data de Nascimento -->
+						<div class="col-12 col-md-4">
+							<p:outputLabel value="Data de Nascimento:" for="data"
+								styleClass="control-label col-form-label" />
+							<p:inputMask value="#{usuarioController.usuario.nascimento}"
+								mask="99/99/9999" id="data" styleClass="form-control"
+								label="Data de Nascimento" size="10" maxlength="10"
+								required="true" requiredMessage="Informe sua data de Nascimento">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
+						</div>
+
+					</div>
+
+					<div class=" row">
+						<!--  e-Mail -->
+						<div class="col-12 col-md-8">
+							<p:outputLabel value="e-Mail:" for="email"
+								styleClass="control-label col-form-label" />
+							<h:panelGroup>
+								<p:inputText value="#{usuarioController.usuario.email}"
+									id="email" styleClass="form-control" label="Email" size="30"
+									maxlength="50" required="true"
+									validatorMessage="e-Mail inválido!">
+									<f:validateRegex
+										pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+								</p:inputText>
+								<h:message for="email" />
+							</h:panelGroup>
+						</div>
+
+						<!--  Celular -->
+						<div class="col-12 col-md-4">
+							<p:outputLabel value="Celular:" for="celular"
+								styleClass="control-label col-form-label" />
+							<p:inputMask value="#{usuarioController.usuario.celular}"
+								mask="(99)9 9999-9999" id="celular" styleClass="form-control"
+								label="Celuar" size="10" maxlength="10" required="true"
+								requiredMessage="Informe seu nomero de Celular" />
+						</div>
+					</div>
+
+					<div class=" row">
+						<!--  Login -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="Login" for="login"
+								styleClass="control-label col-form-label" />
+							<p:inputText value="#{usuarioController.usuario.login}"
+								id="login" styleClass="form-control" label="Login" size="15"
+								maxlength="15" required="true"
+								validatorMessage="Login deve conter no mínimo 05 e no máximo 15 caracteres, e so pode conter os simbolos '.' e '_' ">
+								<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}" />
 							</p:inputText>
-							<h:message for="email" />
-						</h:panelGroup>
+						</div>
+						<!--  row -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="Senha" for="senha"
+								styleClass="control-label  col-form-label" />
+							<p:password value="#{usuarioController.usuario.senha}" id="senha"
+								styleClass="form-control" required="true" redisplay="true"
+								label="Senha" />
+						</div>
 					</div>
 
-					<!--  Celular -->
-					<div class="col-12 col-md-4">
-						<p:outputLabel value="Celular:" for="celular"
-							styleClass="control-label col-form-label" />
-						<p:inputMask value="#{usuarioController.usuario.celular}" mask="(999)9 9999-9999"
-							id="celular" styleClass="form-control" label="Celuar" size="10"
-							maxlength="10" required="true"
-							requiredMessage="Informe seu nomero de Celular" />
+					<div class=" row">
+						<!--  Confirma Senha -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="Confirma Senha" for="cfmsenha"
+								styleClass="control-label col-form-label" />
+							<p:password value="#{usuarioController.confirmaSenha}"
+								id="cfmsenha" styleClass="form-control" required="true"
+								redisplay="true" label="Confirma Senha" />
+						</div>
+						<!--  Idioma -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="Idioma"
+								styleClass="control-label col-form-label" />
+							<h:selectOneMenu id="idioma"
+								value="#{usuarioController.usuario.idioma}"
+								styleClass="form-control">
+								<f:selectItem itemValue="pt_BR" itemLabel="Português" />
+								<f:selectItem itemValue="en_US" itemLabel="Inglês" />
+								<f:selectItem itemValue="es_ES" itemLabel="Espanol" />
+							</h:selectOneMenu>
+
+						</div>
 					</div>
 				</div>
 
-				<div class=" row">
-					<!--  Login -->
-					<div class="col-12 col-md-6">
-						<p:outputLabel value="Login" for="login"
-							styleClass="control-label col-form-label" />
-						<p:inputText value="#{usuarioController.usuario.login}" id="login"
-							styleClass="form-control" label="Login" size="15" maxlength="15"
-							required="true"
-							validatorMessage="Login deve conter no mínimo 05 e no máximo 15 caracteres, e so pode conter os simbolos '.' e '_' ">
-							<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}" />
-						</p:inputText>
-					</div>
-					<!--  row -->
-					<div class="col-12 col-md-6">
-						<p:outputLabel value="Senha" for="senha"
-							styleClass="control-label  col-form-label" />
-						<p:password value="#{usuarioController.usuario.senha}"
-							id="senha" styleClass="form-control" required="true"
-							redisplay="true" label="Senha" />
-					</div>
-				</div>
+				<!-- Butões -->
+				<div class="modal-footer">
 
-				<div class=" row">
-					<!--  Confirma Senha -->
-					<div class="col-12 col-md-6">
-						<p:outputLabel value="Confirma Senha" for="cfmsenha"
-							styleClass="control-label col-form-label" />
-						<p:password value="#{usuarioController.confirmaSenha}"
-							id="cfmsenha" styleClass="form-control" required="true"
-							redisplay="true" label="Confirma Senha" />
-					</div>
-					<!--  Idioma -->
-					<div class="col-12 col-md-6">
-						<p:outputLabel value="Idioma"
-							styleClass="control-label col-form-label" />
-						<h:selectOneMenu id="idioma"
-							value="#{usuarioController.usuario.idioma}"
-							styleClass="form-control">
-							<f:selectItem itemValue="pt_BR" itemLabel="Português" />
-							<f:selectItem itemValue="en_US" itemLabel="Inglês" />
-							<f:selectItem itemValue="es_ES" itemLabel="Espanol" />
-						</h:selectOneMenu>
+					<h:commandButton action="#{usuarioController.salvar}"
+						value=" Salvar " styleClass="btn btn-outline-info btn-lg">
+					</h:commandButton>
+				
 
-					</div>
+
 				</div>
 			</div>
-
-			<!-- Butões -->
-			<div class="modal-footer">
-
-				<h:commandButton actionListener="#{usuarioController.salvar}"
-					value=" Salvar " styleClass="btn btn-outline-info btn-lg"  >
-					
-				</h:commandButton>
-
-			</div>
-		</div>
-	</h:form>
-</ui:define>
+		</h:form>
+	</ui:define>
 </ui:composition>

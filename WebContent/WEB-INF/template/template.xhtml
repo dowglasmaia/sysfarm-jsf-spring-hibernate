@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -35,9 +35,12 @@
 
 	<!-- AdminLTE App  js-->
 	<h:outputScript library="dist" name="js/adminlte.min.js"/>
+	
+	<!-- Js Mask de Moeda -->
+	<h:outputScript library="dist" name="js/jquery.maskMoney.js" />
 
 
-	<title>Maia Ti</title>
+	<title>SysFarm</title>
 
 </h:head>
 <h:body styleClass="hold-transition skin-blue sidebar-mini">	
@@ -46,11 +49,11 @@
 
 		<!-- Main Header -->
 		<header class="main-header" > 
- 		<a href="/jsf_spring/pages/index.jsf" class="logo py-3" style="height:70px !important"> 
+ 		<a href="pages/index.jsf" class="logo py-3" style="height:70px !important"> 
 			<span class="logo-mini">
 			<p>M</p>
 			</span> 
-			<span class="logo-lg"> <b>Maya</b>TI
+			<span class="logo-lg"> <b>Sys</b>FARM
 		</span>
 		</a> 
 		
@@ -132,10 +135,8 @@
 			<!-- Main content -->
 			<section class="content container-fluid mt-5"> 
 			
-			<p:messages id="messages" showDetail="false" closable="true" > <!-- MSG PrimeFaces -->
-				 <p:autoUpdate />
-		 	</p:messages>
-			
+			<p:messages id="messages" showDetail="false" closable="true" autoUpdate="true" /> <!-- MSG PrimeFaces -->
+						
 			<ui:insert
 				name="conteudo">
 
@@ -157,7 +158,19 @@
 	</div>
 	<!-- ./wrapper -->
 
-
+	<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
+	<script>
+		function configurarMoeda() {
+			$(".moeda").maskMoney({
+				decimal : ",",
+				thousands : ".",
+				allowZero : true
+			});
+		}
+		$(document).ready(function() {
+			configurarMoeda();
+		});
+	</script>
 
 </h:body>
 </html>
