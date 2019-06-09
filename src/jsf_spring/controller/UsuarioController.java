@@ -1,5 +1,8 @@
 package jsf_spring.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.omnifaces.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -19,21 +22,35 @@ public class UsuarioController {
 
 	private String confirmaSenha;
 
+	private List<Usuario> usuarios = new ArrayList<>();
+
 	public UsuarioController() {
 		this.usuario = new Usuario();
 	}
 
-	/*== salvar ==*/
+	/* == salvar == */
 	public void salvar() {
 		try {
 			service.save(usuario);
 			Messages.addFlashGlobalInfo("Usuario Salvo com Sucesso!");
 		} catch (Exception e) {
+			e.printStackTrace();
 			Messages.addFlashGlobalError("Erro ao tentar salvar Usuario!", e);
 		}
 	}
 
-	
+	/* ==Listar Todos == */
+	public List<Usuario> findAll() {
+		try {
+			this.usuarios = service.findAll();
+			return usuarios;
+		} catch (Exception e) {
+			e.printStackTrace();
+			Messages.addFlashGlobalError("Erro ao tentar listar Usuarios!", e);
+			return null;
+		}
+	}
+
 	/* ===Getters e Setters ==== */
 	public Usuario getUsuario() {
 		return usuario;

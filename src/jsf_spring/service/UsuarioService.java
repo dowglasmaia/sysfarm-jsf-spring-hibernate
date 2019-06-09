@@ -1,5 +1,7 @@
 package jsf_spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,12 @@ public class UsuarioService {
 		obj.setSenha(hash);
 		obj.setAtivo(true);
 		return dao.save(obj);
+	}
+	
+	/* Lista Todos*/
+	public List<Usuario>findAll() throws Exception{
+		List<Usuario>result = dao.FindAll();
+		return result;
 	}
 
 }

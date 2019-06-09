@@ -4,10 +4,17 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" 
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="conteudo">
+
+		<!-- Chamando o Metodo Inicializar, Antes da Pagina ser carregada  -->
+		<f:metadata>
+			<f:viewParam
+				name="Linha Apenas para resolvendo o excesso de inicializção, porque Não sei explicar rsrs"></f:viewParam>
+			<f:event listener="#{usuarioController.findAll()}"
+				type="preRenderView"></f:event>
+		</f:metadata>
 
 		<h:form id="frmUsuario" styleClass="form-group">
 			<div class="card text-white bg-dark">
@@ -15,43 +22,26 @@
 					<h4>Lista de Usuários</h4>
 				</div>
 				<div class="card-body">
-					<h:dataTable styleClass="table table-hover table-dark">
-						<h:column >
-							<f:facet name="header" >
-								Código
-							</f:facet>
-							<h:outputText />
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								Nome
-							</f:facet>
-							<h:outputText />
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								e-Mail
-							</f:facet>
-							<h:outputText />
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								Fone
-							</f:facet>
-							<h:outputText />
-						</h:column>
+					<p:dataTable id="tblProd" value="#{usuarioController.usuarios}"
+						var="p" paginatorPosition="top" paginator="true" rows="10"
+						emptyMessage="Nenhum Registro Encontrado!">
 
-					</h:dataTable>
+						<p:column headerText="Nome" sortBy="#{p.nome}"
+							filterBy="#{p.nome}" style="width: 80px">
+							<h:outputText value="#{p.nome}" />
+						</p:column>
+
+
+					</p:dataTable>
+
 				</div>
 				<!-- /card-body -->
 
 				<!-- Butões -->
 				<div class="modal-footer">
 
-					<h:button value=" Novo " outcome="usuario.jsf" styleClass="btn btn-outline-info btn-lg" />
+					<h:button value=" Novo " outcome="usuario.jsf"
+						styleClass="btn btn-outline-info btn-lg" />
 
 				</div>
 			</div>

@@ -10,7 +10,7 @@ public interface GenereciDAOInterface<E> extends Serializable {
 
 	E update(E obj) throws Exception;
 
-	void delete(Long id) throws Exception;
+	void delete(E obj) throws Exception;
 
 	E findById(Long id) throws Exception;
 
