@@ -4,10 +4,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" 
+	template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="conteudo">
-
 		<!-- Chamando o Metodo Inicializar, Antes da Pagina ser carregada  -->
 		<f:metadata>
 			<f:viewParam
@@ -16,23 +16,64 @@
 				type="preRenderView"></f:event>
 		</f:metadata>
 
-		<h:form id="frmUsuario" styleClass="form-group">
-			<div class="card text-white bg-dark">
+		<h:form id="frmUsuario" styleClass="form-group container-fluid">
+			<div class="card text-dark">
 				<div class="card-header">
 					<h4>Lista de Usuários</h4>
 				</div>
 				<div class="card-body">
-					<p:dataTable id="tblProd" value="#{usuarioController.usuarios}"
-						var="p" paginatorPosition="top" paginator="true" rows="10"
-						emptyMessage="Nenhum Registro Encontrado!">
-
-						<p:column headerText="Nome" sortBy="#{p.nome}"
-							filterBy="#{p.nome}" style="width: 80px">
+					<h:dataTable styleClass="table table-hover table-striped table-responsive-sm table-responsive-lg"
+					value="#{usuarioController.usuarios}" var="p" >
+						<h:column >
+							<f:facet name="header" >
+								Código
+							</f:facet>
+							<h:outputText value="#{p.id}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header" >
+								Nome
+							</f:facet>
 							<h:outputText value="#{p.nome}" />
-						</p:column>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								e-Mail
+							</f:facet>
+							<h:outputText value="#{p.email}" />
+						</h:column>
+						
+							<h:column>
+							<f:facet name="header">
+								Login
+							</f:facet>
+							<h:outputText value="#{p.login}" />
+						</h:column>
+						
+							<h:column>
+							<f:facet name="header">
+								Data de Nascimento
+							</f:facet>
+							<h:outputText value="#{p.nascimento}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								Fone
+							</f:facet>
+							<h:outputText value="#{p.celular}" />
+						</h:column>
+						
+							<h:column>
+							<f:facet name="header">
+								Status
+							</f:facet>
+							<h:outputText value="#{p.ativo}" />
+						</h:column>
 
-
-					</p:dataTable>
+					</h:dataTable>
 
 				</div>
 				<!-- /card-body -->

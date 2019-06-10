@@ -67,5 +67,9 @@ public class UsuarioController {
 	public void setConfirmaSenha(String confirmaSenha) {
 		this.confirmaSenha = confirmaSenha;
 	}
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
 
 }
