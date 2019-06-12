@@ -26,7 +26,7 @@ body {
 /* Layout */
 .wrapper {
   height: 100%;
-  position: relative;
+  position: relative;f
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -88,7 +88,7 @@ body {
 .content-wrapper {
   min-height: 100%;
   background-color: #ecf0f5;
-  z-index: 800;
+  z-index: auto;
 }
 .main-footer {
   background: #fff;
@@ -498,7 +498,7 @@ a:focus {
 }
 .sidebar-menu {
   list-style: none;
-  margin: 0;
+  margin: 2px;
   padding: 0;
 }
 .sidebar-menu > li {

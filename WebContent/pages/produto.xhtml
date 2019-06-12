@@ -4,14 +4,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" 
-	template="/WEB-INF/template/template.xhtml"
-	>
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="conteudo">
 
 		<h:form id="frmProduto" styleClass="form-group">
-			<div class="card text-white bg-dark">
+			<div class="card">
 				<div class="card-header">
 					<h4>Cadastro de Produtos</h4>
 				</div>
@@ -22,17 +21,17 @@
 						<div class="col-12 col-md-8">
 							<p:outputLabel value="Descrição" for="desc"
 								styleClass="control-label col-form-label" />
-							<p:inputText value="" id="desc"
-								styleClass="form-control" maxlength="50"
-								required="true" requiredMessage="Informea Descrição do Produto" />
+							<p:inputText value="" id="desc" styleClass="form-control"
+								maxlength="50" required="true"
+								requiredMessage="Informea Descrição do Produto" />
 						</div>
 						<!--  Quantidade -->
 						<div class="col-12 col-md-4">
 							<p:outputLabel value="Qtda" for="qtda"
 								styleClass="control-label col-form-label" />
-						<p:inputText value="" id="qtda"
-								styleClass="form-control" maxlength="20"
-								required="true" requiredMessage="Informea a Quantidade" />
+							<p:inputText value="" id="qtda" styleClass="form-control"
+								maxlength="20" required="true"
+								requiredMessage="Informea a Quantidade" />
 						</div>
 
 					</div>
@@ -42,20 +41,28 @@
 						<div class="col-12 col-md-4">
 							<p:outputLabel value="Preço" for="preco"
 								styleClass="control-label col-form-label" />
-							<p:inputText value="" id="preco" placeholder="0.00" 
-								styleClass="form-control moeda" maxlength="20"
-								required="true" requiredMessage="Informea o valor do Produto" />
+							<p:inputText value="" id="preco" placeholder="0.00"
+								styleClass="form-control moeda" maxlength="20" required="true"
+								requiredMessage="Informea o valor do Produto" />
 						</div>
 						<!--  Fabricante -->
 						<div class="col-12 col-md-6">
-							<p:outputLabel value="Fabricante" 
+							<p:outputLabel value="Fabricante"
 								styleClass="control-label col-form-label" />
-							<h:selectOneMenu id="fab" styleClass="form-control">
-								<f:selectItem itemValue="1" itemLabel="Maia Farm" />
-								<f:selectItem itemValue="2" itemLabel="Farm Us" />
-								<f:selectItem itemValue="3" itemLabel="U.S Farm Brasil" />
-							</h:selectOneMenu>
+							<div class="input-group">
+								<h:selectOneMenu id="fab" styleClass="form-control"
+									aria-label="Selecione">
+									<f:selectItem itemValue="1" itemLabel="Maia Farm" />
+									<f:selectItem itemValue="2" itemLabel="Farm Us" />
+									<f:selectItem itemValue="3" itemLabel="U.S Farm Brasil" />
+								</h:selectOneMenu>
 
+								<div class="input-group-append">
+									
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal" data-target="#fbModal"><i class="fa fa-plus"></i></button>
+								</div>
+							</div>
 						</div>
 
 					</div>
@@ -65,16 +72,35 @@
 				<!-- Butões -->
 				<div class="modal-footer">
 
-					<h:commandButton 
-						value=" Salvar " styleClass="btn btn-outline-info btn-lg">
+					<h:commandButton value=" Salvar "
+						styleClass="btn btn-outline-info btn-lg">
 					</h:commandButton>
-					
-				
-				
-
 
 				</div>
 			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="fbModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Cadastro de Fabricantes</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">...</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary">Salvar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</h:form>
 	</ui:define>
 </ui:composition>

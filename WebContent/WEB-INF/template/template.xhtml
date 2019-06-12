@@ -4,7 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" >
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,24 +18,25 @@
 
 	<!-- Theme style -->
 	<h:outputStylesheet library="dist" name="css/AdminLTE.min.css" />
-	
+
 	<!-- Bootstrap -->
-	<h:outputStylesheet library="dist" name="bootstrap-4.3/css/bootstrap.min.css" />
+	<h:outputStylesheet library="dist"
+		name="bootstrap-4.3/css/bootstrap.min.css" />
 
 	<!-- css skins -->
 	<h:outputStylesheet library="dist" name="css/skins/skin-blue.min.css" />
-	
-	
+
+
 	<!--  Addd favicon.png -->
-	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/favicon.png"/>
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{request.contextPath}/resources/img/favicon.png" />
 
 	<!-- Bootstrap 4.3 js -->
-	<h:outputScript library="dist"
-		name="bootstrap-4.3/js/bootstrap.min.js"/>
+	<h:outputScript library="dist" name="bootstrap-4.3/js/bootstrap.min.js" />
 
 	<!-- AdminLTE App  js-->
-	<h:outputScript library="dist" name="js/adminlte.min.js"/>
-	
+	<h:outputScript library="dist" name="js/adminlte.min.js" />
+
 	<!-- Js Mask de Moeda -->
 	<h:outputScript library="dist" name="js/jquery.maskMoney.js" />
 
@@ -43,117 +44,91 @@
 	<title>SysFarm</title>
 
 </h:head>
-<h:body styleClass="hold-transition skin-blue sidebar-mini">	
+<h:body styleClass="hold-transition skin-blue sidebar-mini">
 
 	<div class="wrapper">
 
 		<!-- Main Header -->
-		<header class="main-header" > 
- 		<a href="pages/index.jsf" class="logo py-3" style="height:70px !important"> 
-			<span class="logo-mini">
-			<p>M</p>
-			</span> 
-			<span class="logo-lg"> <b>Sys</b>FARM
+		<header class="main-header"> <a href="pages/index.jsf"
+			class="logo py-3" style="height: 70px !important"> <span
+			class="logo-mini">
+				<p>M</p>
+		</span> <span class="logo-lg"> <b>Sys</b>FARM
 		</span>
-		</a> 
-		
-		 <nav class="navbar navbar-static-top "	role="navigation">
-		  
-			<!-- Sidebar toggle button--> 
-			<a href="#"	class="sidebar-toggle" data-toggle="push-menu" role="button"> 
-				<span class="sr-only">Toggle navigation</span>
-			</a> 
-		<!-- Navbar Right Menu -->
-		 <div class="navbar-custom-menu">
+		</a> <nav class="navbar navbar-static-top " role="navigation"> <!-- Sidebar toggle button-->
+		<a href="#" class="sidebar-toggle" data-toggle="push-menu"
+			role="button"> <span class="sr-only">Toggle navigation</span>
+		</a> <!-- Navbar Right Menu -->
+		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
-				
+
 				<!-- User Account Menu -->
-				<li class="dropdown user user-menu">
-				<a href="#"> 
-				<h:graphicImage	library="img" name="user.png" styleClass="user-image"
+				<li class="dropdown user user-menu"><a href="#"> <h:graphicImage
+							library="img" name="user.png" styleClass="user-image"
 							alt="User Image">
-				</h:graphicImage> 
-				<span class="hidden-xs">Dowglas Maia</span>
-				</a>
-				</li>
-				
+						</h:graphicImage> <span class="hidden-xs">Dowglas Maia</span>
+				</a></li>
+
 			</ul>
 		</div>
-		</nav> 
-		</header>
+		</nav> </header>
 
 		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="main-sidebar my-4">
-		<section class="sidebar"> 
-		<ul class="sidebar-menu" data-widget="tree">
-			<li class="header text-center my-1">MENU</li>
+		<aside class="main-sidebar"> <section class="sidebar">
+		<ul class="sidebar-menu  my-4" data-widget="tree">
+			<li class="header text-center">MENU</li>
 
 			<!-- Optionally, you can add icons to the links -->
-			<li>
-				<a href="index.jsf"><i class="fa fa-link"></i> 
-				<span>Home</span></a>
+			<li><a href="index.jsf"><i class="fa fa-link"></i> <span>Home</span></a>
 			</li>
 
 
 
-			<li class="treeview">
-			<a href="#">
-			        <i class="fa fa-link"></i>
-					<span >Cadastro</span> 
-					<span class="pull-right-container"> 
-					<i class="fa fa-angle-left pull-right"></i>
-				   </span> 
+			<li class="treeview"><a href="#"> <i class="fa fa-link"></i>
+					<span>Cadastro</span> <span class="pull-right-container"> <i
+						class="fa fa-angle-left pull-right"></i>
+				</span>
 			</a>
 				<ul class="treeview-menu">
 					<li><a href="usuario.jsf">Usuário</a></li>
-					<li><a href="#">Produto</a></li>
-				</ul>
-		  </li>
+					<li><a href="produto.jsf">Produto</a></li>
+				</ul></li>
 
-			<li class="treeview">
-			<a href="#"><i class="fa fa-link"></i>
-					<span>Consultas</span> 
-					<span class="pull-right-container"> 
-						<i class="fa fa-angle-left pull-right"></i>
-				    </span> 
-			</a>
+			<li class="treeview"><a href="#"><i class="fa fa-link"></i>
+					<span>Consultas</span> <span class="pull-right-container"> <i
+						class="fa fa-angle-left pull-right"></i>
+				</span> </a>
 				<ul class="treeview-menu">
 					<li><a href="usuario-lista.jsf">Usuários</a></li>
 					<li><a href="#">Produtos</a></li>
-				</ul>
-			</li>
+				</ul></li>
 
 			<li><a href="#"><i class="fa fa-link"></i> <span>Suporte</span></a></li>
 
-		</ul>		
-		</section>		 
-		</aside>
+		</ul>
+		</section> </aside>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-				<p:tooltip /> <!-- Mostra MSG PrimeFaces -->
+			<p:tooltip />
+			<!-- Mostra MSG PrimeFaces -->
 			<!-- Main content -->
-			<section class="content container-fluid mt-5"> 
-			
-			<p:messages id="messages" showDetail="false" closable="true" autoUpdate="true" /> <!-- MSG PrimeFaces -->
-						
-			<ui:insert
-				name="conteudo">
+			<section class="content container-fluid mt-5"> <p:messages
+				id="messages" showDetail="false" closable="true" autoUpdate="true" />
+			<!-- MSG PrimeFaces --> <ui:insert name="conteudo">
 
-			</ui:insert> 
-			</section>			
+			</ui:insert> </section>
 		</div>
 		<!-- /.content-wrapper -->
 
 		<!-- Main Footer -->
-		<footer class="main-footer"> 
-		 	<!-- To the right -->
-			<div class="pull-right hidden-xs">Desenvolvidor por: Dowglas Maia</div>
-		
-			<!-- Default to the left --> <strong>&copy; 2019  | 
-			<a href="#">Maia Ti</a>.
-			</strong> Todos os direitos reservados
-		</footer>
+		<footer class="main-footer"> <!-- To the right -->
+		<div class="pull-right hidden-xs">Desenvolvidor por: Dowglas
+			Maia</div>
+
+		<!-- Default to the left --> <strong>&copy; 2019 | <a
+			href="#">Maia Ti</a>.
+		</strong> Todos os direitos reservados </footer>
 
 	</div>
 	<!-- ./wrapper -->
@@ -170,7 +145,17 @@
 		$(document).ready(function() {
 			configurarMoeda();
 		});
+
+		$('#exampleModal').on('show.bs.modal', function(event) {
+			var button = $(event.relatedTarget)
+			var recipient = button.data('whatever')
+			var modal = $(this)
+			modal.find('.modal-title').text('New message to ' + recipient)
+			modal.find('.modal-body input').val(recipient)
+		})
 	</script>
+
+
 
 </h:body>
 </html>
