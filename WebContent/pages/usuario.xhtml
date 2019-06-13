@@ -4,7 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" 
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="conteudo">
@@ -25,8 +25,21 @@
 								styleClass="form-control" label="Nome" size="30" maxlength="50"
 								required="true" requiredMessage="Informe o Nome de Usuário" />
 						</div>
-						<!--  Data de Nascimento -->
+
+						<!--  CPF -->
 						<div class="col-12 col-md-4">
+							<p:outputLabel value="CPF" for="cpf"
+								styleClass="control-label col-form-label" />
+							<p:inputMask mask="999.999.999-99" id="cpf"
+								styleClass="form-control" maxlength="10" required="true"
+								requiredMessage="Informe o CPF" />
+						</div>
+
+					</div>
+
+					<div class=" row">
+						<!--  Data de Nascimento -->
+						<div class="col-12 col-md-3">
 							<p:outputLabel value="Data de Nascimento:" for="data"
 								styleClass="control-label col-form-label" />
 							<p:inputMask value="#{usuarioController.usuario.nascimento}"
@@ -37,11 +50,18 @@
 							</p:inputMask>
 						</div>
 
-					</div>
+						<!--  Celular -->
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="Celular:" for="celular"
+								styleClass="control-label col-form-label" />
+							<p:inputMask value="#{usuarioController.usuario.celular}"
+								mask="(99)9 9999-9999" id="celular" styleClass="form-control"
+								maxlength="10" required="true"
+								requiredMessage="Informe seu nomero de Celular" />
+						</div>
 
-					<div class=" row">
 						<!--  e-Mail -->
-						<div class="col-12 col-md-8">
+						<div class="col-12 col-md-6">
 							<p:outputLabel value="e-Mail:" for="email"
 								styleClass="control-label col-form-label" />
 							<h:panelGroup>
@@ -56,14 +76,28 @@
 							</h:panelGroup>
 						</div>
 
-						<!--  Celular -->
-						<div class="col-12 col-md-4">
-							<p:outputLabel value="Celular:" for="celular"
+					</div>
+
+					<div class=" row">
+
+						<!--  Data de Admissão -->
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="Data de Admissão" for="admin"
 								styleClass="control-label col-form-label" />
-							<p:inputMask value="#{usuarioController.usuario.celular}"
-								mask="(99)9 9999-9999" id="celular" styleClass="form-control"
-								label="Celuar" size="10" maxlength="10" required="true"
-								requiredMessage="Informe seu nomero de Celular" />
+							<p:inputMask mask="99/99/9999" id="admin"
+								styleClass="form-control" required="true"
+								requiredMessage="Informe a data de admissão">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
+						</div>
+
+						<!--  Data de Demissão -->
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="Data de Demissão" for="dem"
+								styleClass="control-label col-form-label" />
+							<p:inputMask mask="99/99/9999" id="dem" styleClass="form-control">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
 						</div>
 					</div>
 
@@ -79,37 +113,25 @@
 								<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}" />
 							</p:inputText>
 						</div>
-						<!--  row -->
-						<div class="col-12 col-md-6">
+
+					</div>
+
+					<div class=" row">
+
+						<div class="col-12 col-md-3">
 							<p:outputLabel value="Senha" for="senha"
 								styleClass="control-label  col-form-label" />
 							<p:password value="#{usuarioController.usuario.senha}" id="senha"
 								styleClass="form-control" required="true" redisplay="true"
 								label="Senha" />
 						</div>
-					</div>
-
-					<div class=" row">
 						<!--  Confirma Senha -->
-						<div class="col-12 col-md-6">
+						<div class="col-12 col-md-3">
 							<p:outputLabel value="Confirma Senha" for="cfmsenha"
 								styleClass="control-label col-form-label" />
 							<p:password value="#{usuarioController.confirmaSenha}"
 								id="cfmsenha" styleClass="form-control" required="true"
 								redisplay="true" label="Confirma Senha" />
-						</div>
-						<!--  Idioma -->
-						<div class="col-12 col-md-6">
-							<p:outputLabel value="Idioma"
-								styleClass="control-label col-form-label" />
-							<h:selectOneMenu id="idioma"
-								value="#{usuarioController.usuario.idioma}"
-								styleClass="form-control">
-								<f:selectItem itemValue="pt_BR" itemLabel="Português" />
-								<f:selectItem itemValue="en_US" itemLabel="Inglês" />
-								<f:selectItem itemValue="es_ES" itemLabel="Espanol" />
-							</h:selectOneMenu>
-
 						</div>
 					</div>
 				</div>
@@ -120,7 +142,7 @@
 					<h:commandButton action="#{usuarioController.salvar}"
 						value=" Salvar " styleClass="btn btn-outline-info btn-lg">
 					</h:commandButton>
-				
+
 
 
 				</div>

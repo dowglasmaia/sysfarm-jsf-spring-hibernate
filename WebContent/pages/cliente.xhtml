@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form id="frmCleinte" styleClass="form-group container-fluid">
+			<div class="card text-dark ">
+				<div class="card-header">
+					<h4>Cadastro de Clientes</h4>
+				</div>
+				<div class="card-body">
+
+					<div class=" row">
+						<!--  Nome -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="Nome:" for="nome"
+								styleClass="control-label col-form-label" />
+							<p:inputText id="nome" styleClass="form-control" label="Nome"
+								maxlength="50" required="true"
+								requiredMessage="Informe o Nome de Cliente" />
+						</div>
+
+						<!--  CPF -->
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="CPF" for="cpf"
+								styleClass="control-label col-form-label" />
+							<p:inputMask mask="999.999.999-99" id="cpf"
+								styleClass="form-control" maxlength="10" required="true"
+								requiredMessage="Informe o CPF" />
+						</div>
+
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="RG" for="rg"
+								styleClass="control-label  col-form-label" />
+							<p:inputText id="rg" styleClass="form-control" required="true"
+								requiredMessage="Campo Rg é obrigatório!" maxlength="10" />
+						</div>
+
+					</div>
+
+					<div class=" row">
+						<!--  Data de Nascimento -->
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="Data de Nascimento:" for="data"
+								styleClass="control-label col-form-label" />
+							<p:inputMask mask="99/99/9999" id="data"
+								styleClass="form-control" label="Data de Nascimento"
+								maxlength="10" required="true"
+								requiredMessage="Informe a data de Nascimento">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
+						</div>
+
+						<!--  Celular -->
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="Celular:" for="celular"
+								styleClass="control-label col-form-label" />
+							<p:inputMask mask="(99)9 9999-9999" id="celular"
+								styleClass="form-control" maxlength="10" required="true"
+								requiredMessage="Informe um número de Celular" />
+						</div>
+
+						<!--  e-Mail -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="e-Mail:" for="email"
+								styleClass="control-label col-form-label" />
+							<h:panelGroup>
+								<p:inputText id="email" styleClass="form-control" label="Email"
+									maxlength="50" required="true"
+									validatorMessage="e-Mail inválido!">
+									<f:validateRegex
+										pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+								</p:inputText>
+								<h:message for="email" />
+							</h:panelGroup>
+						</div>
+					</div>
+
+
+					<div class=" row">
+						<!--   -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="Rua" for="rua"
+								styleClass="control-label col-form-label" />
+							<p:inputText id="rua" styleClass="form-control" label="Rua"
+								maxlength="50" required="true"
+								requiredMessage="Campo Rua é obrigatório" />
+						</div>
+
+						<!--  NUMERO -->
+						<div class="col-12 col-md-2">
+							<p:outputLabel value="Número" for="num"
+								styleClass="control-label col-form-label" />
+							<p:inputText id="num" styleClass="form-control" label="Número"
+								maxlength="10" required="true"
+								requiredMessage="Campo número é obrigatório" />
+						</div>
+
+						<!-- BAIRRO  -->
+						<div class="col-12 col-md-4">
+							<p:outputLabel value="Bairro" for="bairro"
+								styleClass="control-label col-form-label" />
+							<p:inputText id="bairro" styleClass="form-control" maxlength="10"
+								required="true" requiredMessage="Campo Bairro é obrigatório" />
+						</div>
+
+
+					</div>
+
+					<div class=" row">
+						<!-- CEP  -->
+						<div class="col-12 col-md-3">
+							<p:outputLabel value="Cep" for="cep"
+								styleClass="control-label col-form-label" />
+							<p:inputText id="cep" styleClass="form-control" maxlength="10"
+								required="true" requiredMessage="Campo Cep é obrigatório" />
+						</div>
+
+						<!-- COMPLEMENTO  -->
+						<div class="col-12 col-md-7">
+							<p:outputLabel value="Complemento" for="comp"
+								styleClass="control-label col-form-label" />
+							<p:inputText id="comp" styleClass="form-control" maxlength="50" />
+						</div>
+					</div>
+
+
+					<div class=" row">
+						<!--  CIDADE -->
+						<div class="col-12 col-md-6">
+							<p:outputLabel value="Cidade"
+								styleClass="control-label col-form-label" />
+							<div class="input-group">
+								<h:selectOneMenu id="fab" styleClass="form-control"
+									aria-label="Selecione">
+									<f:selectItem itemValue="1" itemLabel="Goiânia" />
+									<f:selectItem itemValue="2" itemLabel="Imperatriz" />
+									<f:selectItem itemValue="3" itemLabel="Montreal" />
+								</h:selectOneMenu>
+
+								<div class="input-group-append">
+
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal" data-target="#fbModal">
+										<i class="fa fa-plus"></i> Cadastrar
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<!-- Butões -->
+				<div class="modal-footer">
+
+					<h:commandButton action="#{usuarioController.salvar}"
+						value=" Salvar " styleClass="btn btn-outline-info btn-lg">
+					</h:commandButton>
+
+				</div>
+			</div>
+
+
+			<!-- Modal -->
+			<div class="modal fade" id="fbModal" tabindex="-1" role="dialog"
+				aria-labelledby="Label" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+
+						<div class="modal-header">
+							<h5 class="modal-title" id="Label">Cadastro de Cidade</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							<div class=" row">
+								<!-- Nome  -->
+								<div class="col-12">
+									<p:outputLabel value="Nome" for="cid_nome"
+										styleClass="control-label col-form-label" />
+									<p:inputText id="cid_nome" styleClass="form-control"
+										maxlength="20" required="true"
+										requiredMessage="Informe o Nome da Cidade" />
+								</div>
+
+								<!-- Estado  -->
+								<div class="col-12">
+									<p:outputLabel value="Estado" for="uf"
+										styleClass="control-label col-form-label" />
+									<h:selectOneMenu id="uf" styleClass="form-control"
+										aria-label="Selecione">
+										<f:selectItem itemValue="GO" itemLabel="Goiás" />
+										<f:selectItem itemValue="MA" itemLabel="Maranhão" />
+										<f:selectItem itemValue="TO" itemLabel="Tocantins" />
+									</h:selectOneMenu>
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Cancelar</button>
+
+							<button type="button" class="btn btn-primary">Salvar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
